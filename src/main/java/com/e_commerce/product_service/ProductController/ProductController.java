@@ -1,5 +1,6 @@
 package com.e_commerce.product_service.ProductController;
 
+import com.e_commerce.product_service.ProductService.ProductService;
 import com.e_commerce.product_service.dto.ProductRequest;
 import com.e_commerce.product_service.model.Product;
 import lombok.RequiredArgsConstructor;
@@ -14,12 +15,13 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ProductController {
     //inject server i will add after
-
-    //post for create product
+    private final ProductService productService;
+    //post for create product use request from client
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void CreateProduct(@RequestBody ProductRequest productrequest) {
-
+    public void CreateProduct(@RequestBody ProductRequest ProductRequest) {
+// use server busness logic
+        productService.CreateProduct(ProductRequest);
     }
 
 
