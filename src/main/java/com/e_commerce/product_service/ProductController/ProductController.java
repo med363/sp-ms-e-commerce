@@ -1,5 +1,6 @@
 package com.e_commerce.product_service.ProductController;
 
+import com.e_commerce.product_service.dto.ProductRequest;
 import com.e_commerce.product_service.model.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
