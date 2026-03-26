@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 //RestApi lombok annotation
 @RestController
 // restApi value
@@ -22,6 +24,12 @@ public class ProductController {
     public void CreateProduct(@RequestBody ProductRequest ProductRequest) {
 // use server busness logic
         productService.CreateProduct(ProductRequest);
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<Product> getAllProducts() {
+        return ProductService.getAllProducts();
     }
 
 
