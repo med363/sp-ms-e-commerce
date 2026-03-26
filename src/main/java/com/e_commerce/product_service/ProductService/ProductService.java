@@ -31,4 +31,6 @@ public class ProductService {
         log.debug("Created product with id: {}", product.getId());
 
     }
+
+    public List
 }
