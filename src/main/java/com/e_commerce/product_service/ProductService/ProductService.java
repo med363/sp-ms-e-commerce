@@ -2,10 +2,13 @@ package com.e_commerce.product_service.ProductService;
 
 import com.e_commerce.product_service.ProductRepo.ProductRepository;
 import com.e_commerce.product_service.dto.ProductRequest;
+import com.e_commerce.product_service.dto.ProductResponse;
 import com.e_commerce.product_service.model.Product;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 // constructor for repo injection
@@ -32,5 +35,19 @@ public class ProductService {
 
     }
 
-    public List
+    public List<ProductResponse> GetAllProducts() {
+        List<Product> products= productRepository.findAll();
+
+        return products.stream().map(this:: mapToProductResponse).toList();
+    }
+
+    private ProductResponse mapToProductResponse(Product product) {
+        return ProductResponse.builder()
+                .id(product.getId())
+                .price(product.getPrice())
+                .quantity(product.getQuantity())
+                .name(product.getName())
+                .description(product.getDescription())
+                .build();
+    }
 }
